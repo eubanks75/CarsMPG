@@ -1,0 +1,1698 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20181.18.0706.1237                               -->
+<workbook source-build='2018.1.3 (20181.18.0706.1237)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='top_10' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='10'>
+        <calculation class='tableau' formula='10' />
+        <range max='10' min='1' />
+      </column>
+      <column caption='current_year' datatype='integer' name='[Year Parameter]' param-domain-type='range' role='measure' type='quantitative' value='1984'>
+        <calculation class='tableau' formula='1984' />
+        <range max='2019' min='1984' />
+      </column>
+    </datasource>
+    <datasource caption='all_data_since_1984' inline='true' name='federated.0wfmxhu0zheblb10oaj6x0getc5a' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='all_data_since_1984' name='textscan.1t6amjr1owkn1a17v0phl0pt6es3'>
+            <connection class='textscan' directory='C:/Users/gabri/Desktop/BigData' filename='all_data_since_1984.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='automanufacturers' name='textscan.0j68p0w1ykyweu1d4aa2s0sz5140'>
+            <connection class='textscan' directory='C:/Users/gabri/Desktop/BigData' filename='automanufacturers.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[all_data_since_1984.csv].[make]' />
+              <expression op='[automanufacturers.csv].[Make]' />
+            </expression>
+          </clause>
+          <relation connection='textscan.1t6amjr1owkn1a17v0phl0pt6es3' name='all_data_since_1984.csv' table='[all_data_since_1984#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='integer' name='year' ordinal='0' />
+              <column datatype='string' name='make' ordinal='1' />
+              <column datatype='string' name='model' ordinal='2' />
+              <column datatype='integer' name='city_mpg' ordinal='3' />
+              <column datatype='integer' name='hwy_mpg' ordinal='4' />
+              <column datatype='integer' name='comb_mpg' ordinal='5' />
+              <column datatype='integer' name='cylinder' ordinal='6' />
+              <column datatype='string' name='drive_type' ordinal='7' />
+              <column datatype='integer' name='expected_annual_fuel_cost' ordinal='8' />
+              <column datatype='string' name='fuel_type' ordinal='9' />
+              <column datatype='string' name='transmission' ordinal='10' />
+              <column datatype='string' name='vehicle_class' ordinal='11' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0j68p0w1ykyweu1d4aa2s0sz5140' name='automanufacturers.csv' table='[automanufacturers#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='string' name='Make' ordinal='0' />
+              <column datatype='string' name='Continent' ordinal='1' />
+              <column datatype='string' name='Country' ordinal='2' />
+              <column datatype='string' name='State' ordinal='3' />
+            </columns>
+          </relation>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[all_data_since_1984.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[year]</local-name>
+            <parent-name>[all_data_since_1984.csv]</parent-name>
+            <remote-alias>year</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>make</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[make]</local-name>
+            <parent-name>[all_data_since_1984.csv]</parent-name>
+            <remote-alias>make</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>model</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[model]</local-name>
+            <parent-name>[all_data_since_1984.csv]</parent-name>
+            <remote-alias>model</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>city_mpg</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[city_mpg]</local-name>
+            <parent-name>[all_data_since_1984.csv]</parent-name>
+            <remote-alias>city_mpg</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hwy_mpg</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[hwy_mpg]</local-name>
+            <parent-name>[all_data_since_1984.csv]</parent-name>
+            <remote-alias>hwy_mpg</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>comb_mpg</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[comb_mpg]</local-name>
+            <parent-name>[all_data_since_1984.csv]</parent-name>
+            <remote-alias>comb_mpg</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cylinder</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cylinder]</local-name>
+            <parent-name>[all_data_since_1984.csv]</parent-name>
+            <remote-alias>cylinder</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>drive_type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[drive_type]</local-name>
+            <parent-name>[all_data_since_1984.csv]</parent-name>
+            <remote-alias>drive_type</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>expected_annual_fuel_cost</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[expected_annual_fuel_cost]</local-name>
+            <parent-name>[all_data_since_1984.csv]</parent-name>
+            <remote-alias>expected_annual_fuel_cost</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fuel_type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[fuel_type]</local-name>
+            <parent-name>[all_data_since_1984.csv]</parent-name>
+            <remote-alias>fuel_type</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>transmission</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[transmission]</local-name>
+            <parent-name>[all_data_since_1984.csv]</parent-name>
+            <remote-alias>transmission</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>vehicle_class</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[vehicle_class]</local-name>
+            <parent-name>[all_data_since_1984.csv]</parent-name>
+            <remote-alias>vehicle_class</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[automanufacturers.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Make</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Make]</local-name>
+            <parent-name>[automanufacturers.csv]</parent-name>
+            <remote-alias>Make</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Continent</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Continent]</local-name>
+            <parent-name>[automanufacturers.csv]</parent-name>
+            <remote-alias>Continent</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country]</local-name>
+            <parent-name>[automanufacturers.csv]</parent-name>
+            <remote-alias>Country</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>State</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[State]</local-name>
+            <parent-name>[automanufacturers.csv]</parent-name>
+            <remote-alias>State</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='rank' datatype='integer' name='[Calculation_487233206977691648]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='INDEX()'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='average_comb_mpg' datatype='real' name='[Calculation_491455331483033601]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='AVG([comb_mpg])' />
+      </column>
+      <column datatype='string' name='[Continent]' role='dimension' type='nominal' />
+      <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column datatype='string' name='[Drive Type (group)]' role='dimension' type='nominal'>
+        <calculation class='categorical-bin' column='[drive_type]' default='&quot;Other&quot;' new-bin='true'>
+          <bin default-name='false' value='&quot;All-Wheel Drive&quot;'>
+            <value>&quot;4-Wheel Drive&quot;</value>
+            <value>&quot;4-Wheel or All-Wheel Drive&quot;</value>
+            <value>&quot;All-Wheel Drive&quot;</value>
+            <value>&quot;Automatic (A1)&quot;</value>
+            <value>&quot;Part-time 4-Wheel Drive&quot;</value>
+          </bin>
+          <bin default-name='true' value='&quot;Front-Wheel Drive&quot;'>
+            <value>&quot;Front-Wheel Drive&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;Rear-Wheel Drive&quot;'>
+            <value>&quot;Rear-Wheel Drive&quot;</value>
+          </bin>
+        </calculation>
+      </column>
+      <column datatype='string' name='[Fuel Type (group)]' role='dimension' type='nominal'>
+        <calculation class='categorical-bin' column='[fuel_type]' new-bin='true'>
+          <bin default-name='false' value='&quot;alternative&quot;'>
+            <value>&quot;CNG&quot;</value>
+            <value>&quot;Electricity&quot;</value>
+            <value>&quot;Gasoline or E85&quot;</value>
+            <value>&quot;Gasoline or natural gas&quot;</value>
+            <value>&quot;Gasoline or propane&quot;</value>
+            <value>&quot;Premium and Electricity&quot;</value>
+            <value>&quot;Premium Gas or Electricity&quot;</value>
+            <value>&quot;Premium or E85&quot;</value>
+            <value>&quot;Regular Gas and Electricity&quot;</value>
+            <value>&quot;Regular Gas or Electricity&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;diesel&quot;'>
+            <value>&quot;Diesel&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;gazoline&quot;'>
+            <value>&quot;Midgrade&quot;</value>
+            <value>&quot;Premium&quot;</value>
+            <value>&quot;Regular&quot;</value>
+          </bin>
+        </calculation>
+      </column>
+      <column caption='Make1' datatype='string' hidden='true' name='[Make]' role='dimension' type='nominal' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column datatype='string' name='[State]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column caption='Vehicle Class Type' datatype='string' name='[Vehicle Class (group) 1]' role='dimension' type='nominal'>
+        <calculation class='categorical-bin' column='[vehicle_class]' new-bin='true'>
+          <bin default-name='false' value='&quot;Coupes&quot;'>
+            <value>&quot;Minicompact Cars&quot;</value>
+            <value>&quot;Subcompact Cars&quot;</value>
+            <value>&quot;Two Seaters&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;Hatchbacks&quot;'>
+            <value>&quot;Midsize Station Wagons&quot;</value>
+            <value>&quot;Midsize-Large Station Wagons&quot;</value>
+            <value>&quot;Small Station Wagons&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;Minivans&quot;'>
+            <value>&quot;Minivan - 2WD&quot;</value>
+            <value>&quot;Minivan - 4WD&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;Pickup Trucks&quot;'>
+            <value>&quot;Small Pickup Trucks&quot;</value>
+            <value>&quot;Small Pickup Trucks 2WD&quot;</value>
+            <value>&quot;Small Pickup Trucks 4WD&quot;</value>
+            <value>&quot;Standard Pickup Trucks&quot;</value>
+            <value>&quot;Standard Pickup Trucks 2WD&quot;</value>
+            <value>&quot;Standard Pickup Trucks 4WD&quot;</value>
+            <value>&quot;Standard Pickup Trucks/2wd&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;Sedans&quot;'>
+            <value>&quot;Compact Cars&quot;</value>
+            <value>&quot;Midsize Cars&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;Special Purpose&quot;'>
+            <value>&quot;Special Purpose Vehicle 2WD&quot;</value>
+            <value>&quot;Special Purpose Vehicle 4WD&quot;</value>
+            <value>&quot;Special Purpose Vehicles&quot;</value>
+            <value>&quot;Special Purpose Vehicles/2wd&quot;</value>
+            <value>&quot;Special Purpose Vehicles/4wd&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;SUVs&quot;'>
+            <value>&quot;Large Cars&quot;</value>
+            <value>&quot;Small Sport Utility Vehicle 2WD&quot;</value>
+            <value>&quot;Small Sport Utility Vehicle 4WD&quot;</value>
+            <value>&quot;Sport Utility Vehicle - 2WD&quot;</value>
+            <value>&quot;Sport Utility Vehicle - 4WD&quot;</value>
+            <value>&quot;Standard Sport Utility Vehicle 2WD&quot;</value>
+            <value>&quot;Standard Sport Utility Vehicle 4WD&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;Vans&quot;'>
+            <value>&quot;Vans&quot;</value>
+            <value>&quot;Vans Passenger&quot;</value>
+            <value>&quot;Vans, Cargo Type&quot;</value>
+            <value>&quot;Vans, Passenger Type&quot;</value>
+          </bin>
+        </calculation>
+      </column>
+      <column caption='City Mpg' datatype='integer' name='[city_mpg]' role='measure' type='quantitative' />
+      <column caption='Comb Mpg' datatype='integer' name='[comb_mpg]' role='measure' type='quantitative' />
+      <column aggregation='Sum' caption='Cylinder' datatype='integer' name='[cylinder]' role='dimension' type='ordinal' />
+      <column caption='Drive Type' datatype='string' name='[drive_type]' role='dimension' type='nominal' />
+      <column caption='Expected Annual Fuel Cost' datatype='integer' name='[expected_annual_fuel_cost]' role='measure' type='quantitative' />
+      <column caption='Fuel Type' datatype='string' name='[fuel_type]' role='dimension' type='nominal' />
+      <column caption='Hwy Mpg' datatype='integer' name='[hwy_mpg]' role='measure' type='quantitative' />
+      <column caption='Make' datatype='string' name='[make]' role='dimension' type='nominal' />
+      <column caption='Model' datatype='string' name='[model]' role='dimension' type='nominal' />
+      <column caption='Transmission' datatype='string' name='[transmission]' role='dimension' type='nominal' />
+      <column caption='Vehicle Class' datatype='string' name='[vehicle_class]' role='dimension' type='nominal' />
+      <column caption='Year' datatype='integer' name='[year]' role='dimension' type='quantitative' />
+      <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+      <column-instance column='[make]' derivation='None' name='[none:make:nk]' pivot='key' type='nominal' />
+      <column-instance column='[model]' derivation='None' name='[none:model:nk]' pivot='key' type='nominal' />
+      <column-instance column='[year]' derivation='None' name='[none:year:ok]' pivot='key' type='ordinal' />
+      <group name='[Make &amp; Model (Combined)]' name-style='unqualified' user:ui-builder='nest-group'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[make]' />
+          <groupfilter function='level-members' level='[model]' />
+        </groupfilter>
+      </group>
+      <group name='[Model &amp; Make (Combined)]' name-style='unqualified' user:ui-builder='nest-group'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[model]' />
+          <groupfilter function='level-members' level='[make]' />
+        </groupfilter>
+      </group>
+      <drill-paths>
+        <drill-path name='Country, State' />
+      </drill-paths>
+      <layout dim-ordering='alphabetic' dim-percentage='0.571661' measure-ordering='alphabetic' measure-percentage='0.356678' parameter-percentage='0.0716612' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Country:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;New Zealand&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;India&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Sweden&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Romania&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Italy&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;China&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Japan&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;UK&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;United Kingdom&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Serbia&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Netherlands&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;France&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;USA&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;South Korea&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Germany&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:make:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;BMW&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Scion&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;Hyundai&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Honda&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;Tesla&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Chevrolet&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <filter class='categorical' column='[Continent]' filter-group='2'>
+        <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+          <groupfilter function='level-members' level='[Continent]' />
+          <groupfilter function='member' level='[Continent]' member='%null%' />
+        </groupfilter>
+      </filter>
+      <filter class='categorical' column='[none:make:nk]' filter-group='2'>
+        <groupfilter function='level-members' level='[none:make:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='categorical' column='[none:model:nk]' filter-group='2'>
+        <groupfilter function='level-members' level='[none:model:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='categorical' column='[none:year:ok]' filter-group='2'>
+        <groupfilter function='level-members' level='[none:year:ok]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <shared-views>
+    <shared-view name='federated.0wfmxhu0zheblb10oaj6x0getc5a'>
+      <datasources>
+        <datasource caption='all_data_since_1984' name='federated.0wfmxhu0zheblb10oaj6x0getc5a' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0wfmxhu0zheblb10oaj6x0getc5a'>
+        <column datatype='string' name='[Continent]' role='dimension' type='nominal' />
+        <column datatype='string' name='[Drive Type (group)]' role='dimension' type='nominal'>
+          <calculation class='categorical-bin' column='[drive_type]' default='&quot;Other&quot;' new-bin='true'>
+            <bin default-name='false' value='&quot;All-Wheel Drive&quot;'>
+              <value>&quot;4-Wheel Drive&quot;</value>
+              <value>&quot;4-Wheel or All-Wheel Drive&quot;</value>
+              <value>&quot;All-Wheel Drive&quot;</value>
+              <value>&quot;Automatic (A1)&quot;</value>
+              <value>&quot;Part-time 4-Wheel Drive&quot;</value>
+            </bin>
+            <bin default-name='true' value='&quot;Front-Wheel Drive&quot;'>
+              <value>&quot;Front-Wheel Drive&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Rear-Wheel Drive&quot;'>
+              <value>&quot;Rear-Wheel Drive&quot;</value>
+            </bin>
+          </calculation>
+        </column>
+        <column datatype='string' name='[Fuel Type (group)]' role='dimension' type='nominal'>
+          <calculation class='categorical-bin' column='[fuel_type]' new-bin='true'>
+            <bin default-name='false' value='&quot;alternative&quot;'>
+              <value>&quot;CNG&quot;</value>
+              <value>&quot;Electricity&quot;</value>
+              <value>&quot;Gasoline or E85&quot;</value>
+              <value>&quot;Gasoline or natural gas&quot;</value>
+              <value>&quot;Gasoline or propane&quot;</value>
+              <value>&quot;Premium and Electricity&quot;</value>
+              <value>&quot;Premium Gas or Electricity&quot;</value>
+              <value>&quot;Premium or E85&quot;</value>
+              <value>&quot;Regular Gas and Electricity&quot;</value>
+              <value>&quot;Regular Gas or Electricity&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;diesel&quot;'>
+              <value>&quot;Diesel&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;gazoline&quot;'>
+              <value>&quot;Midgrade&quot;</value>
+              <value>&quot;Premium&quot;</value>
+              <value>&quot;Regular&quot;</value>
+            </bin>
+          </calculation>
+        </column>
+        <column caption='Vehicle Class Type' datatype='string' name='[Vehicle Class (group) 1]' role='dimension' type='nominal'>
+          <calculation class='categorical-bin' column='[vehicle_class]' new-bin='true'>
+            <bin default-name='false' value='&quot;Coupes&quot;'>
+              <value>&quot;Minicompact Cars&quot;</value>
+              <value>&quot;Subcompact Cars&quot;</value>
+              <value>&quot;Two Seaters&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Hatchbacks&quot;'>
+              <value>&quot;Midsize Station Wagons&quot;</value>
+              <value>&quot;Midsize-Large Station Wagons&quot;</value>
+              <value>&quot;Small Station Wagons&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Minivans&quot;'>
+              <value>&quot;Minivan - 2WD&quot;</value>
+              <value>&quot;Minivan - 4WD&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Pickup Trucks&quot;'>
+              <value>&quot;Small Pickup Trucks&quot;</value>
+              <value>&quot;Small Pickup Trucks 2WD&quot;</value>
+              <value>&quot;Small Pickup Trucks 4WD&quot;</value>
+              <value>&quot;Standard Pickup Trucks&quot;</value>
+              <value>&quot;Standard Pickup Trucks 2WD&quot;</value>
+              <value>&quot;Standard Pickup Trucks 4WD&quot;</value>
+              <value>&quot;Standard Pickup Trucks/2wd&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Sedans&quot;'>
+              <value>&quot;Compact Cars&quot;</value>
+              <value>&quot;Midsize Cars&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Special Purpose&quot;'>
+              <value>&quot;Special Purpose Vehicle 2WD&quot;</value>
+              <value>&quot;Special Purpose Vehicle 4WD&quot;</value>
+              <value>&quot;Special Purpose Vehicles&quot;</value>
+              <value>&quot;Special Purpose Vehicles/2wd&quot;</value>
+              <value>&quot;Special Purpose Vehicles/4wd&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;SUVs&quot;'>
+              <value>&quot;Large Cars&quot;</value>
+              <value>&quot;Small Sport Utility Vehicle 2WD&quot;</value>
+              <value>&quot;Small Sport Utility Vehicle 4WD&quot;</value>
+              <value>&quot;Sport Utility Vehicle - 2WD&quot;</value>
+              <value>&quot;Sport Utility Vehicle - 4WD&quot;</value>
+              <value>&quot;Standard Sport Utility Vehicle 2WD&quot;</value>
+              <value>&quot;Standard Sport Utility Vehicle 4WD&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Vans&quot;'>
+              <value>&quot;Vans&quot;</value>
+              <value>&quot;Vans Passenger&quot;</value>
+              <value>&quot;Vans, Cargo Type&quot;</value>
+              <value>&quot;Vans, Passenger Type&quot;</value>
+            </bin>
+          </calculation>
+        </column>
+        <column caption='Drive Type' datatype='string' name='[drive_type]' role='dimension' type='nominal' />
+        <column caption='Fuel Type' datatype='string' name='[fuel_type]' role='dimension' type='nominal' />
+        <column caption='Make' datatype='string' name='[make]' role='dimension' type='nominal' />
+        <column caption='Model' datatype='string' name='[model]' role='dimension' type='nominal' />
+        <column-instance column='[Continent]' derivation='None' name='[none:Continent:nk]' pivot='key' type='nominal' />
+        <column-instance column='[make]' derivation='None' name='[none:make:nk]' pivot='key' type='nominal' />
+        <column-instance column='[model]' derivation='None' name='[none:model:nk]' pivot='key' type='nominal' />
+        <column-instance column='[year]' derivation='None' name='[none:year:ok]' pivot='key' type='ordinal' />
+        <column caption='Vehicle Class' datatype='string' name='[vehicle_class]' role='dimension' type='nominal' />
+        <column caption='Year' datatype='integer' name='[year]' role='dimension' type='quantitative' />
+      </datasource-dependencies>
+      <filter class='categorical' column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Drive Type (group)]'>
+        <groupfilter function='level-members' level='[Drive Type (group)]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='categorical' column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Fuel Type (group)]'>
+        <groupfilter function='level-members' level='[Fuel Type (group)]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='categorical' column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Vehicle Class (group) 1]'>
+        <groupfilter function='level-members' level='[Vehicle Class (group) 1]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='categorical' column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:Continent:nk]'>
+        <groupfilter function='level-members' level='[none:Continent:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='categorical' column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:make:nk]'>
+        <groupfilter function='level-members' level='[none:make:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='categorical' column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:model:nk]'>
+        <groupfilter function='level-members' level='[none:model:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='categorical' column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:year:ok]'>
+        <groupfilter function='member' level='[none:year:ok]' member='2012' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+      </filter>
+    </shared-view>
+  </shared-views>
+  <worksheets>
+    <worksheet name='Annual MPG mapper'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='all_data_since_1984' name='federated.0wfmxhu0zheblb10oaj6x0getc5a' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.0wfmxhu0zheblb10oaj6x0getc5a'>
+            <column datatype='string' name='[Continent]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='string' name='[Drive Type (group)]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[drive_type]' default='&quot;Other&quot;' new-bin='true'>
+                <bin default-name='false' value='&quot;All-Wheel Drive&quot;'>
+                  <value>&quot;4-Wheel Drive&quot;</value>
+                  <value>&quot;4-Wheel or All-Wheel Drive&quot;</value>
+                  <value>&quot;All-Wheel Drive&quot;</value>
+                  <value>&quot;Automatic (A1)&quot;</value>
+                  <value>&quot;Part-time 4-Wheel Drive&quot;</value>
+                </bin>
+                <bin default-name='true' value='&quot;Front-Wheel Drive&quot;'>
+                  <value>&quot;Front-Wheel Drive&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Rear-Wheel Drive&quot;'>
+                  <value>&quot;Rear-Wheel Drive&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column datatype='string' name='[Fuel Type (group)]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[fuel_type]' new-bin='true'>
+                <bin default-name='false' value='&quot;alternative&quot;'>
+                  <value>&quot;CNG&quot;</value>
+                  <value>&quot;Electricity&quot;</value>
+                  <value>&quot;Gasoline or E85&quot;</value>
+                  <value>&quot;Gasoline or natural gas&quot;</value>
+                  <value>&quot;Gasoline or propane&quot;</value>
+                  <value>&quot;Premium and Electricity&quot;</value>
+                  <value>&quot;Premium Gas or Electricity&quot;</value>
+                  <value>&quot;Premium or E85&quot;</value>
+                  <value>&quot;Regular Gas and Electricity&quot;</value>
+                  <value>&quot;Regular Gas or Electricity&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;diesel&quot;'>
+                  <value>&quot;Diesel&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;gazoline&quot;'>
+                  <value>&quot;Midgrade&quot;</value>
+                  <value>&quot;Premium&quot;</value>
+                  <value>&quot;Regular&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column caption='Vehicle Class Type' datatype='string' name='[Vehicle Class (group) 1]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[vehicle_class]' new-bin='true'>
+                <bin default-name='false' value='&quot;Coupes&quot;'>
+                  <value>&quot;Minicompact Cars&quot;</value>
+                  <value>&quot;Subcompact Cars&quot;</value>
+                  <value>&quot;Two Seaters&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Hatchbacks&quot;'>
+                  <value>&quot;Midsize Station Wagons&quot;</value>
+                  <value>&quot;Midsize-Large Station Wagons&quot;</value>
+                  <value>&quot;Small Station Wagons&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Minivans&quot;'>
+                  <value>&quot;Minivan - 2WD&quot;</value>
+                  <value>&quot;Minivan - 4WD&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Pickup Trucks&quot;'>
+                  <value>&quot;Small Pickup Trucks&quot;</value>
+                  <value>&quot;Small Pickup Trucks 2WD&quot;</value>
+                  <value>&quot;Small Pickup Trucks 4WD&quot;</value>
+                  <value>&quot;Standard Pickup Trucks&quot;</value>
+                  <value>&quot;Standard Pickup Trucks 2WD&quot;</value>
+                  <value>&quot;Standard Pickup Trucks 4WD&quot;</value>
+                  <value>&quot;Standard Pickup Trucks/2wd&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Sedans&quot;'>
+                  <value>&quot;Compact Cars&quot;</value>
+                  <value>&quot;Midsize Cars&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Special Purpose&quot;'>
+                  <value>&quot;Special Purpose Vehicle 2WD&quot;</value>
+                  <value>&quot;Special Purpose Vehicle 4WD&quot;</value>
+                  <value>&quot;Special Purpose Vehicles&quot;</value>
+                  <value>&quot;Special Purpose Vehicles/2wd&quot;</value>
+                  <value>&quot;Special Purpose Vehicles/4wd&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;SUVs&quot;'>
+                  <value>&quot;Large Cars&quot;</value>
+                  <value>&quot;Small Sport Utility Vehicle 2WD&quot;</value>
+                  <value>&quot;Small Sport Utility Vehicle 4WD&quot;</value>
+                  <value>&quot;Sport Utility Vehicle - 2WD&quot;</value>
+                  <value>&quot;Sport Utility Vehicle - 4WD&quot;</value>
+                  <value>&quot;Standard Sport Utility Vehicle 2WD&quot;</value>
+                  <value>&quot;Standard Sport Utility Vehicle 4WD&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Vans&quot;'>
+                  <value>&quot;Vans&quot;</value>
+                  <value>&quot;Vans Passenger&quot;</value>
+                  <value>&quot;Vans, Cargo Type&quot;</value>
+                  <value>&quot;Vans, Passenger Type&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column-instance column='[comb_mpg]' derivation='Avg' name='[avg:comb_mpg:qk]' pivot='key' type='quantitative' />
+            <column caption='Comb Mpg' datatype='integer' name='[comb_mpg]' role='measure' type='quantitative' />
+            <column caption='Drive Type' datatype='string' name='[drive_type]' role='dimension' type='nominal' />
+            <column caption='Fuel Type' datatype='string' name='[fuel_type]' role='dimension' type='nominal' />
+            <column caption='Make' datatype='string' name='[make]' role='dimension' type='nominal' />
+            <column caption='Model' datatype='string' name='[model]' role='dimension' type='nominal' />
+            <column-instance column='[Continent]' derivation='None' name='[none:Continent:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+            <column-instance column='[make]' derivation='None' name='[none:make:nk]' pivot='key' type='nominal' />
+            <column-instance column='[model]' derivation='None' name='[none:model:nk]' pivot='key' type='nominal' />
+            <column-instance column='[year]' derivation='None' name='[none:year:ok]' pivot='key' type='ordinal' />
+            <column caption='Vehicle Class' datatype='string' name='[vehicle_class]' role='dimension' type='nominal' />
+            <column caption='Year' datatype='integer' name='[year]' role='dimension' type='quantitative' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:Continent:nk]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:year:ok]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:make:nk]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:model:nk]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Drive Type (group)]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Vehicle Class (group) 1]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Fuel Type (group)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Longitude (generated)]' field-type='quantitative' max='105329456.673281' min='76802458.646053597' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Latitude (generated)]' field-type='quantitative' max='11523871.242251318' min='-18110641.226669632' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[avg:comb_mpg:qk]' num-steps='5' palette='red_green_gold_diverging_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='map-layer'>
+            <format attr='enabled' id='tab_base' value='true' />
+            <format attr='enabled' id='um_lcover' value='true' />
+            <format attr='enabled' id='tab_coastline' value='false' />
+            <format attr='enabled' id='pp2_line' value='false' />
+            <format attr='enabled' id='light_adm0_bnd' value='false' />
+            <format attr='enabled' id='light_adm0_lbl' value='false' />
+            <format attr='enabled' id='um_adm0_bnd' value='false' />
+            <format attr='enabled' id='um_adm0_lbl' value='true' />
+            <format attr='enabled' id='light_pp2_statebounds' value='false' />
+            <format attr='enabled' id='light_pp2_statelabels' value='false' />
+            <format attr='enabled' id='pp2_adminlabels' value='false' />
+            <format attr='enabled' id='pp2_statebounds' value='true' />
+            <format attr='enabled' id='pp2_statelabels' value='true' />
+            <format attr='enabled' id='countybounds' value='false' />
+            <format attr='enabled' id='countylabels' value='false' />
+            <format attr='enabled' id='zipbounds' value='false' />
+            <format attr='enabled' id='ziplabels' value='false' />
+            <format attr='enabled' id='tab_areabounds' value='false' />
+            <format attr='enabled' id='tab_arealabels' value='false' />
+            <format attr='enabled' id='tab_msabounds' value='false' />
+            <format attr='enabled' id='tab_msalabels' value='false' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.25' />
+            <format attr='map-style' value='tableau-z-black' />
+            <format attr='wrap' value='true' />
+          </style-rule>
+          <style-rule element='map-data-layer'>
+            <format attr='palette' value='tableau-map-blue-green-dark' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Multipolygon' />
+            <encodings>
+              <text column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:Country:nk]' />
+              <color column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[avg:comb_mpg:qk]' />
+              <geometry column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Geometry (generated)]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-transparency' value='206' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='614' />
+                <format attr='maxwidth' value='614' />
+                <format attr='minheight' value='638' />
+                <format attr='maxheight' value='638' />
+                <format attr='aspect' value='0' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Latitude (generated)]</rows>
+        <cols>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Longitude (generated)]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Top 10 Models'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='all_data_since_1984' name='federated.0wfmxhu0zheblb10oaj6x0getc5a' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0wfmxhu0zheblb10oaj6x0getc5a'>
+            <column caption='rank' datatype='integer' name='[Calculation_487233206977691648]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='INDEX()'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='average_comb_mpg' datatype='real' name='[Calculation_491455331483033601]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='AVG([comb_mpg])' />
+            </column>
+            <column datatype='string' name='[Continent]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Drive Type (group)]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[drive_type]' default='&quot;Other&quot;' new-bin='true'>
+                <bin default-name='false' value='&quot;All-Wheel Drive&quot;'>
+                  <value>&quot;4-Wheel Drive&quot;</value>
+                  <value>&quot;4-Wheel or All-Wheel Drive&quot;</value>
+                  <value>&quot;All-Wheel Drive&quot;</value>
+                  <value>&quot;Automatic (A1)&quot;</value>
+                  <value>&quot;Part-time 4-Wheel Drive&quot;</value>
+                </bin>
+                <bin default-name='true' value='&quot;Front-Wheel Drive&quot;'>
+                  <value>&quot;Front-Wheel Drive&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Rear-Wheel Drive&quot;'>
+                  <value>&quot;Rear-Wheel Drive&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column datatype='string' name='[Fuel Type (group)]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[fuel_type]' new-bin='true'>
+                <bin default-name='false' value='&quot;alternative&quot;'>
+                  <value>&quot;CNG&quot;</value>
+                  <value>&quot;Electricity&quot;</value>
+                  <value>&quot;Gasoline or E85&quot;</value>
+                  <value>&quot;Gasoline or natural gas&quot;</value>
+                  <value>&quot;Gasoline or propane&quot;</value>
+                  <value>&quot;Premium and Electricity&quot;</value>
+                  <value>&quot;Premium Gas or Electricity&quot;</value>
+                  <value>&quot;Premium or E85&quot;</value>
+                  <value>&quot;Regular Gas and Electricity&quot;</value>
+                  <value>&quot;Regular Gas or Electricity&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;diesel&quot;'>
+                  <value>&quot;Diesel&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;gazoline&quot;'>
+                  <value>&quot;Midgrade&quot;</value>
+                  <value>&quot;Premium&quot;</value>
+                  <value>&quot;Regular&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column caption='Vehicle Class Type' datatype='string' name='[Vehicle Class (group) 1]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[vehicle_class]' new-bin='true'>
+                <bin default-name='false' value='&quot;Coupes&quot;'>
+                  <value>&quot;Minicompact Cars&quot;</value>
+                  <value>&quot;Subcompact Cars&quot;</value>
+                  <value>&quot;Two Seaters&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Hatchbacks&quot;'>
+                  <value>&quot;Midsize Station Wagons&quot;</value>
+                  <value>&quot;Midsize-Large Station Wagons&quot;</value>
+                  <value>&quot;Small Station Wagons&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Minivans&quot;'>
+                  <value>&quot;Minivan - 2WD&quot;</value>
+                  <value>&quot;Minivan - 4WD&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Pickup Trucks&quot;'>
+                  <value>&quot;Small Pickup Trucks&quot;</value>
+                  <value>&quot;Small Pickup Trucks 2WD&quot;</value>
+                  <value>&quot;Small Pickup Trucks 4WD&quot;</value>
+                  <value>&quot;Standard Pickup Trucks&quot;</value>
+                  <value>&quot;Standard Pickup Trucks 2WD&quot;</value>
+                  <value>&quot;Standard Pickup Trucks 4WD&quot;</value>
+                  <value>&quot;Standard Pickup Trucks/2wd&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Sedans&quot;'>
+                  <value>&quot;Compact Cars&quot;</value>
+                  <value>&quot;Midsize Cars&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Special Purpose&quot;'>
+                  <value>&quot;Special Purpose Vehicle 2WD&quot;</value>
+                  <value>&quot;Special Purpose Vehicle 4WD&quot;</value>
+                  <value>&quot;Special Purpose Vehicles&quot;</value>
+                  <value>&quot;Special Purpose Vehicles/2wd&quot;</value>
+                  <value>&quot;Special Purpose Vehicles/4wd&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;SUVs&quot;'>
+                  <value>&quot;Large Cars&quot;</value>
+                  <value>&quot;Small Sport Utility Vehicle 2WD&quot;</value>
+                  <value>&quot;Small Sport Utility Vehicle 4WD&quot;</value>
+                  <value>&quot;Sport Utility Vehicle - 2WD&quot;</value>
+                  <value>&quot;Sport Utility Vehicle - 4WD&quot;</value>
+                  <value>&quot;Standard Sport Utility Vehicle 2WD&quot;</value>
+                  <value>&quot;Standard Sport Utility Vehicle 4WD&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Vans&quot;'>
+                  <value>&quot;Vans&quot;</value>
+                  <value>&quot;Vans Passenger&quot;</value>
+                  <value>&quot;Vans, Cargo Type&quot;</value>
+                  <value>&quot;Vans, Passenger Type&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column-instance column='[comb_mpg]' derivation='Avg' name='[avg:comb_mpg:qk]' pivot='key' type='quantitative' />
+            <column caption='Comb Mpg' datatype='integer' name='[comb_mpg]' role='measure' type='quantitative' />
+            <column aggregation='Sum' caption='Cylinder' datatype='integer' name='[cylinder]' role='dimension' type='ordinal' />
+            <column caption='Drive Type' datatype='string' name='[drive_type]' role='dimension' type='nominal' />
+            <column caption='Fuel Type' datatype='string' name='[fuel_type]' role='dimension' type='nominal' />
+            <column caption='Make' datatype='string' name='[make]' role='dimension' type='nominal' />
+            <column caption='Model' datatype='string' name='[model]' role='dimension' type='nominal' />
+            <column-instance column='[Continent]' derivation='None' name='[none:Continent:nk]' pivot='key' type='nominal' />
+            <column-instance column='[cylinder]' derivation='None' name='[none:cylinder:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[make]' derivation='None' name='[none:make:nk]' pivot='key' type='nominal' />
+            <column-instance column='[model]' derivation='None' name='[none:model:nk]' pivot='key' type='nominal' />
+            <column-instance column='[year]' derivation='None' name='[none:year:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_487233206977691648]' derivation='User' name='[usr:Calculation_487233206977691648:qk:3]' pivot='key' type='quantitative'>
+              <table-calc level-break='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[make]' ordering-type='Field'>
+                <order field='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:year:ok]' />
+                <order field='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[make]' />
+                <order field='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[model]' />
+                <sort direction='DESC' using='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[usr:Calculation_491455331483033601:qk]' />
+              </table-calc>
+            </column-instance>
+            <column-instance column='[Calculation_491455331483033601]' derivation='User' name='[usr:Calculation_491455331483033601:qk]' pivot='key' type='quantitative' />
+            <column caption='Vehicle Class' datatype='string' name='[vehicle_class]' role='dimension' type='nominal' />
+            <column caption='Year' datatype='integer' name='[year]' role='dimension' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:cylinder:ok]'>
+            <groupfilter function='level-members' level='[none:cylinder:ok]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='quantitative' column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[usr:Calculation_487233206977691648:qk:3]' included-values='in-range'>
+            <min>1</min>
+            <max>10</max>
+          </filter>
+          <slices>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[usr:Calculation_487233206977691648:qk:3]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:Continent:nk]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:year:ok]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:make:nk]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:model:nk]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Drive Type (group)]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Vehicle Class (group) 1]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Fuel Type (group)]</column>
+            <column>[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:cylinder:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='618' />
+          </style-rule>
+          <style-rule element='field-labels-decoration'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='field-labels-spanner'>
+            <format attr='separator' scope='rows' value='/' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[avg:comb_mpg:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+            <encoding attr='color' field='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[avg:comb_mpg:qk]' num-steps='5' palette='red_green_gold_diverging_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='quick-filter'>
+            <format attr='title' field='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:make:nk]' value='Make'>
+              <formatted-text>
+                <run>Make</run>
+              </formatted-text>
+            </format>
+            <format attr='title' field='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Drive Type (group)]' value='Drive Type'>
+              <formatted-text>
+                <run>Drive Type</run>
+              </formatted-text>
+            </format>
+            <format attr='title' field='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Fuel Type (group)]' value='Fuel Type'>
+              <formatted-text>
+                <run>Fuel Type</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='on' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <size column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[avg:comb_mpg:qk]' />
+              <color column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[avg:comb_mpg:qk]' />
+              <text column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:year:ok]' />
+              <text column='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Make &amp; Model (Combined)]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+                <format attr='mark-transparency' value='206' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource caption='all_data_since_1984' name='federated.0wfmxhu0zheblb10oaj6x0getc5a' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0wfmxhu0zheblb10oaj6x0getc5a'>
+        <column datatype='string' name='[Continent]' role='dimension' type='nominal' />
+        <column datatype='string' name='[Drive Type (group)]' role='dimension' type='nominal'>
+          <calculation class='categorical-bin' column='[drive_type]' default='&quot;Other&quot;' new-bin='true'>
+            <bin default-name='false' value='&quot;All-Wheel Drive&quot;'>
+              <value>&quot;4-Wheel Drive&quot;</value>
+              <value>&quot;4-Wheel or All-Wheel Drive&quot;</value>
+              <value>&quot;All-Wheel Drive&quot;</value>
+              <value>&quot;Automatic (A1)&quot;</value>
+              <value>&quot;Part-time 4-Wheel Drive&quot;</value>
+            </bin>
+            <bin default-name='true' value='&quot;Front-Wheel Drive&quot;'>
+              <value>&quot;Front-Wheel Drive&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Rear-Wheel Drive&quot;'>
+              <value>&quot;Rear-Wheel Drive&quot;</value>
+            </bin>
+          </calculation>
+        </column>
+        <column datatype='string' name='[Fuel Type (group)]' role='dimension' type='nominal'>
+          <calculation class='categorical-bin' column='[fuel_type]' new-bin='true'>
+            <bin default-name='false' value='&quot;alternative&quot;'>
+              <value>&quot;CNG&quot;</value>
+              <value>&quot;Electricity&quot;</value>
+              <value>&quot;Gasoline or E85&quot;</value>
+              <value>&quot;Gasoline or natural gas&quot;</value>
+              <value>&quot;Gasoline or propane&quot;</value>
+              <value>&quot;Premium and Electricity&quot;</value>
+              <value>&quot;Premium Gas or Electricity&quot;</value>
+              <value>&quot;Premium or E85&quot;</value>
+              <value>&quot;Regular Gas and Electricity&quot;</value>
+              <value>&quot;Regular Gas or Electricity&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;diesel&quot;'>
+              <value>&quot;Diesel&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;gazoline&quot;'>
+              <value>&quot;Midgrade&quot;</value>
+              <value>&quot;Premium&quot;</value>
+              <value>&quot;Regular&quot;</value>
+            </bin>
+          </calculation>
+        </column>
+        <column caption='Vehicle Class Type' datatype='string' name='[Vehicle Class (group) 1]' role='dimension' type='nominal'>
+          <calculation class='categorical-bin' column='[vehicle_class]' new-bin='true'>
+            <bin default-name='false' value='&quot;Coupes&quot;'>
+              <value>&quot;Minicompact Cars&quot;</value>
+              <value>&quot;Subcompact Cars&quot;</value>
+              <value>&quot;Two Seaters&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Hatchbacks&quot;'>
+              <value>&quot;Midsize Station Wagons&quot;</value>
+              <value>&quot;Midsize-Large Station Wagons&quot;</value>
+              <value>&quot;Small Station Wagons&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Minivans&quot;'>
+              <value>&quot;Minivan - 2WD&quot;</value>
+              <value>&quot;Minivan - 4WD&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Pickup Trucks&quot;'>
+              <value>&quot;Small Pickup Trucks&quot;</value>
+              <value>&quot;Small Pickup Trucks 2WD&quot;</value>
+              <value>&quot;Small Pickup Trucks 4WD&quot;</value>
+              <value>&quot;Standard Pickup Trucks&quot;</value>
+              <value>&quot;Standard Pickup Trucks 2WD&quot;</value>
+              <value>&quot;Standard Pickup Trucks 4WD&quot;</value>
+              <value>&quot;Standard Pickup Trucks/2wd&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Sedans&quot;'>
+              <value>&quot;Compact Cars&quot;</value>
+              <value>&quot;Midsize Cars&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Special Purpose&quot;'>
+              <value>&quot;Special Purpose Vehicle 2WD&quot;</value>
+              <value>&quot;Special Purpose Vehicle 4WD&quot;</value>
+              <value>&quot;Special Purpose Vehicles&quot;</value>
+              <value>&quot;Special Purpose Vehicles/2wd&quot;</value>
+              <value>&quot;Special Purpose Vehicles/4wd&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;SUVs&quot;'>
+              <value>&quot;Large Cars&quot;</value>
+              <value>&quot;Small Sport Utility Vehicle 2WD&quot;</value>
+              <value>&quot;Small Sport Utility Vehicle 4WD&quot;</value>
+              <value>&quot;Sport Utility Vehicle - 2WD&quot;</value>
+              <value>&quot;Sport Utility Vehicle - 4WD&quot;</value>
+              <value>&quot;Standard Sport Utility Vehicle 2WD&quot;</value>
+              <value>&quot;Standard Sport Utility Vehicle 4WD&quot;</value>
+            </bin>
+            <bin default-name='false' value='&quot;Vans&quot;'>
+              <value>&quot;Vans&quot;</value>
+              <value>&quot;Vans Passenger&quot;</value>
+              <value>&quot;Vans, Cargo Type&quot;</value>
+              <value>&quot;Vans, Passenger Type&quot;</value>
+            </bin>
+          </calculation>
+        </column>
+        <column aggregation='Sum' caption='Cylinder' datatype='integer' name='[cylinder]' role='dimension' type='ordinal' />
+        <column caption='Drive Type' datatype='string' name='[drive_type]' role='dimension' type='nominal' />
+        <column caption='Fuel Type' datatype='string' name='[fuel_type]' role='dimension' type='nominal' />
+        <column caption='Make' datatype='string' name='[make]' role='dimension' type='nominal' />
+        <column caption='Model' datatype='string' name='[model]' role='dimension' type='nominal' />
+        <column-instance column='[Continent]' derivation='None' name='[none:Continent:nk]' pivot='key' type='nominal' />
+        <column-instance column='[cylinder]' derivation='None' name='[none:cylinder:ok]' pivot='key' type='ordinal' />
+        <column-instance column='[make]' derivation='None' name='[none:make:nk]' pivot='key' type='nominal' />
+        <column-instance column='[model]' derivation='None' name='[none:model:nk]' pivot='key' type='nominal' />
+        <column-instance column='[year]' derivation='None' name='[none:year:ok]' pivot='key' type='ordinal' />
+        <column caption='Vehicle Class' datatype='string' name='[vehicle_class]' role='dimension' type='nominal' />
+        <column caption='Year' datatype='integer' name='[year]' role='dimension' type='quantitative' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='5' param='horz' type='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='98000' id='3' type='layout-basic' w='63400' x='800' y='1000'>
+              <zone h='49000' id='1' name='Annual MPG mapper' show-title='false' w='63400' x='800' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='49000' id='7' name='Top 10 Models' show-title='false' w='63400' x='800' y='50000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='350' h='98000' id='4' is-fixed='true' param='vert' type='layout-flow' w='35000' x='64200' y='1000'>
+              <zone h='6500' id='8' mode='dropdown' name='Top 10 Models' param='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:year:ok]' type='filter' values='relevant' w='35000' x='64200' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='13500' id='11' name='Top 10 Models' param='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:Continent:nk]' type='filter' values='relevant' w='35000' x='64200' y='7500'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='6500' id='13' mode='dropdown' name='Top 10 Models' param='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Vehicle Class (group) 1]' type='filter' values='relevant' w='35000' x='64200' y='21000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='6500' id='9' mode='dropdown' name='Top 10 Models' param='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:make:nk]' type='filter' values='relevant' w='35000' x='64200' y='27500'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='6500' id='10' mode='checkdropdown' name='Top 10 Models' param='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:model:nk]' type='filter' values='relevant' w='35000' x='64200' y='34000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='6500' id='12' mode='dropdown' name='Top 10 Models' param='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Drive Type (group)]' type='filter' values='relevant' w='35000' x='64200' y='40500'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='6500' id='14' mode='dropdown' name='Top 10 Models' param='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Fuel Type (group)]' type='filter' values='database' w='35000' x='64200' y='47000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='6500' id='15' mode='dropdown' name='Top 10 Models' param='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:cylinder:ok]' type='filter' values='relevant' w='35000' x='64200' y='53500'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+    </dashboard>
+    <dashboard name='Story 1' type='storyboard'>
+      <style />
+      <size maxheight='964' maxwidth='1016' minheight='964' minwidth='1016' />
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98340' id='1' param='vert' removable='false' type='layout-flow' w='98426' x='787' y='830'>
+            <zone h='3423' id='3' type='title' w='98426' x='787' y='830' />
+            <zone h='10477' id='4' is-fixed='true' paired-zone-id='5' removable='false' type='flipboard-nav' w='98426' x='787' y='4253' />
+            <zone h='84440' id='5' paired-zone-id='4' removable='false' type='flipboard' w='98426' x='787' y='14730'>
+              <flipboard active-id='2' nav-type='caption' show-nav-arrows='true'>
+                <story-points>
+                  <story-point captured-sheet='' id='2' />
+                </story-points>
+              </flipboard>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name='Annual MPG mapper'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='16' />
+      </viewpoint>
+    </window>
+    <window class='worksheet' name='Top 10 Models'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='dropdown' param='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Fuel Type (group)]' type='filter' values='relevant' />
+            <card param='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Vehicle Class (group) 1]' type='filter' values='relevant' />
+            <card mode='dropdown' param='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[Drive Type (group)]' type='filter' values='relevant' />
+            <card mode='dropdown' param='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:Continent:nk]' type='filter' values='relevant' />
+            <card mode='dropdown' param='[federated.0wfmxhu0zheblb10oaj6x0getc5a].[none:cylinder:ok]' type='filter' values='relevant' />
+          </strip>
+        </edge>
+      </cards>
+    </window>
+    <window class='dashboard' maximized='true' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Annual MPG mapper'>
+          <zoom type='entire-view' />
+          <default-map-tool-selection tool='1' />
+        </viewpoint>
+        <viewpoint name='Top 10 Models' />
+      </viewpoints>
+      <active id='1' />
+    </window>
+    <window class='dashboard' name='Story 1'>
+      <viewpoints />
+      <active id='5' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Dashboard 1' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>
